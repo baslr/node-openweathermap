@@ -1,0 +1,38 @@
+{
+  "name": "openweathermap",
+  "description": "A small abstraction layer for the openweathermap API",
+  "keywords": [
+    "weather",
+    "openweathermap",
+    "openweather",
+    "API"
+  ],
+  "version": "0.0.1",
+  "author": {
+    "name": "Manuel Baesler",
+    "email": "baslr.at.github@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/baslr/node-openweathermap.git"
+  },
+  "bugs": {
+    "url": "http://github.com/baslr/node-openweathermap/issues"
+  },
+  "devDependencies": {
+    "coffee-script": "1.6.x"
+  },
+  "main": "./openweather.js",
+  "homepage": "http://github.com/baslr/node-openweathermap/",
+
+  "engines": {
+    "node": ">=0.10.x"
+  },
+  "licenses": [
+    {
+      "type": "AGPL",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  ],
+  "readmeFilename": "Readme.md"
+}
