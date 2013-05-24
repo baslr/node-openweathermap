@@ -23,6 +23,9 @@ A small abstraction layer for the openweathermap API
     #  cnt:int(number of days for forecast)
     daily(cfg, callback)
     
+    # get history for a city
+    history(cfg, callback)
+    
     # find
     #  cnt, beginns from 0, cnt 0 returns 1 item, cnt 1 returns 2 items
     find(cfg, callback)
@@ -35,6 +38,22 @@ A small abstraction layer for the openweathermap API
     q:     'City Name e.g. London,UK or Berlin,Germany'
     cnt:   Number(forecast:number of days, find: 0..)
     id:    Number(city id)
+    
+    # history
+    type:  ('tick'|'hour'|'day')
+    start: Number(unix timestamp)
+    end:   Number(unix timestamp)
+    cnt:   Number(list count)
+    
+attribute \ function | defaults | now | daily | history | find
+--------------------:|    ::    | ::  |  ::   |   ::    | ::
+q                    |     x    |  x  |   x   |    -    | x
+id                   |     x    |  x  |   x   |    x    | -
+cnt                  |     x    |  -  |   x   |    x    | x
+start                |     x    |  -  |   -   |    x    | -
+end                  |     x    |  -  |   -   |    x    | -
+units                |     x    |  x  |   x   |    x    | x
+
 
 ### Examples
 
@@ -50,6 +69,10 @@ A small abstraction layer for the openweathermap API
     # 2 days forecast
     weather.daily {id:2886242, cnt:2}, (json) ->
       console.dir json
+      
+    # history for 3 hours
+    weather.history {type:'hour', id:2886242, cnt:3}, (json) ->
+      console.dir json
 
     # find 3 berlins
     weather.find {q:'berlin', cnt:2}, (json) ->
@@ -58,6 +81,9 @@ A small abstraction layer for the openweathermap API
 more Infos about openweathermap.org <http://openweathermap.org>
 
 ### changelog
+
+#### 0.0.3
+* added city history
 
 #### 0.0.2
 * added find
