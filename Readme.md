@@ -40,3 +40,6 @@ for now only json support.
     # 2 days forecast
     weather.now {id:2886242, cnt:2}, (json) ->
       console.dir json      
+      
+      
+more Infos about openweathermap.org <http://openweathermap.org>
