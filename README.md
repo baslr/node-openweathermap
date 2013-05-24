@@ -46,14 +46,13 @@ A small abstraction layer for the openweathermap API
     cnt:   Number(list count)
     
 attribute \ function | defaults | now | daily | history | find
---------------------:|    ::    | ::  |  ::   |   ::    | ::
+--------------------:|:--------:|:---:|:-----:|:-------:|:---:
 q                    |     x    |  x  |   x   |    -    | x
 id                   |     x    |  x  |   x   |    x    | -
 cnt                  |     x    |  -  |   x   |    x    | x
 start                |     x    |  -  |   -   |    x    | -
 end                  |     x    |  -  |   -   |    x    | -
 units                |     x    |  x  |   x   |    x    | x
-
 
 ### Examples
 
