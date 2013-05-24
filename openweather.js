@@ -20,11 +20,21 @@
     return def = objs.join('&');
   };
 
-  exports.find = function() {};
+  exports.find = function(cfg, cb) {
+    opts.path = "/data/2.5/find?" + (buildPath(cfg));
+    return getWeather(opts, function(json) {
+      var item, _i, _len, _ref;
+      _ref = json.list;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        item = _ref[_i];
+        item.weather[0].iconUrl = "http://openweathermap.org/img/w/" + item.weather[0].icon + ".png";
+      }
+      return cb(json);
+    });
+  };
 
   exports.now = function(cfg, cb) {
     opts.path = "/data/2.5/weather?" + (buildPath(cfg));
-    console.log(opts.path);
     return getWeather(opts, function(json) {
       json.weather[0].iconUrl = "http://openweathermap.org/img/w/" + json.weather[0].icon + ".png";
       return cb(json);
@@ -33,15 +43,19 @@
 
   exports.forecast = function(cfg, cb) {
     opts.path = "/data/2.5/forecast?" + (buildPath(cfg));
-    console.log(opts.path);
     return getWeather(opts, function(json) {
+      var item, _i, _len, _ref;
+      _ref = json.list;
+      for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+        item = _ref[_i];
+        item.weather[0].iconUrl = "http://openweathermap.org/img/w/" + item.weather[0].icon + ".png";
+      }
       return cb(json);
     });
   };
 
   exports.daily = function(cfg, cb) {
     opts.path = "/data/2.5/forecast/daily?" + (buildPath(cfg));
-    console.log(opts.path);
     return getWeather(opts, function(json) {
       var item, _i, _len, _ref;
       _ref = json.list;
