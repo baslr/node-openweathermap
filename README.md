@@ -18,11 +18,12 @@ A small abstraction layer for the openweathermap API
     #  cnt:int(number of days for forecast)
     daily(cfg, callback)
     
-### defaluts
+### (defaluts)
 
     units: ('metric'|'imperial'|'internal')
     lang:  ('en'|'ru'|'it'|'sp'|'ua'|'de'|pt'|'ro'|'pl'|'fi'|'nl'|'fr'|'bg'|'se'|'zh_tw'|zh_cn')
     mode:  'json'
+    q:     'City Name e.g. London,UK or Berlin,Germany'
     
 for now only json support.
 
