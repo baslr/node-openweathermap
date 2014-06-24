@@ -1,3 +1,0 @@
-var ow = require( './openWeather.js');
-
-ow.daily({q: ''}, function(data){console.log(data)})
