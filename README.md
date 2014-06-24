@@ -77,9 +77,14 @@ units                |     x    |  x  |   x   |    x    | x
     weather.find {q:'berlin', cnt:2}, (json) ->
       console.dir json
 
-more Infos about openweathermap.org <http://openweathermap.org>
+more infos about openweathermap.org at <http://openweathermap.org>
 
 ### changelog
+
+#### 0.1.1
+* fixed #1
+* resonse now in flow mode
+* use <http://semver.org/>
 
 #### 0.0.3
 * added city history
