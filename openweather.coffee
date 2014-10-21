@@ -1,6 +1,6 @@
 
 http    = require 'http'
-opts    = hostname:'api.openweathermap.org', port: 80
+opts    = hostname:'api.openweathermap.org', port: 80, withCredentials: false
 imgPath = 'http://openweathermap.org/img/w/'
 def     = ''
 

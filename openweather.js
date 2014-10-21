@@ -6,7 +6,8 @@
 
   opts = {
     hostname: 'api.openweathermap.org',
-    port: 80
+    port: 80,
+    withCredentials: false
   };
 
   imgPath = 'http://openweathermap.org/img/w/';
