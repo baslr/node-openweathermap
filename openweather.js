@@ -105,7 +105,7 @@
       });
       return res.on('end', function() {
         var json;
-        json = JSON.parse(buffer('utf8'));
+        json = JSON.parse(buffer);
         if (json.list == null) {
           json.list = [];
         }

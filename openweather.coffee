@@ -63,6 +63,6 @@ getWeather = (opts, cb) ->
     res.on 'data', (data) -> buffer += data;
       
     res.on 'end', () ->
-      json = JSON.parse buffer 'utf8'
+      json = JSON.parse buffer
       json.list = [] if ! json.list?
       cb json
