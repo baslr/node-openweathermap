@@ -5,7 +5,8 @@
   http = require('http');
 
   opts = {
-    hostname: 'api.openweathermap.org'
+    hostname: 'api.openweathermap.org',
+    port: ''
   };
 
   imgPath = 'http://openweathermap.org/img/w/';
