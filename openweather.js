@@ -99,13 +99,13 @@
   getWeather = function(opts, cb) {
     return http.get(opts, function(res) {
       var buffer;
-      buffer = new Buffer(0);
+      buffer = '';
       res.on('data', function(data) {
-        return buffer = Buffer.concat([buffer, data]);
+        return buffer += data;
       });
       return res.on('end', function() {
         var json;
-        json = JSON.parse(buffer.toString('utf8'));
+        json = JSON.parse(buffer('utf8'));
         if (json.list == null) {
           json.list = [];
         }
