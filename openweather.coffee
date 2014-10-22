@@ -9,6 +9,11 @@ exports.defaults = (cfg) ->
   objs.push "#{i}=#{n}" for i,n of cfg  
   def = objs.join '&'
 
+exports.opts = (optsIn = {}) ->
+  opts[i] = optsIn[i] for i,n of optsIn
+  this
+
+
 exports.find = (cfg, cb) ->
   opts.path = "/data/2.5/find?#{buildPath(cfg)}"
 
