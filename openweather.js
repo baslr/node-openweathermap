@@ -5,7 +5,9 @@
   http = require('http');
 
   opts = {
-    hostname: 'api.openweathermap.org'
+    hostname: 'api.openweathermap.org',
+    port: 80,
+    withCredentials: false
   };
 
   imgPath = 'http://openweathermap.org/img/w/';
@@ -97,13 +99,13 @@
   getWeather = function(opts, cb) {
     return http.get(opts, function(res) {
       var buffer;
-      buffer = new Buffer(0);
+      buffer = '';
       res.on('data', function(data) {
-        return buffer = Buffer.concat([buffer, data]);
+        return buffer += data;
       });
       return res.on('end', function() {
         var json;
-        json = JSON.parse(buffer.toString('utf8'));
+        json = JSON.parse(buffer);
         if (json.list == null) {
           json.list = [];
         }
