@@ -92,6 +92,8 @@ more infos about openweathermap.org at <http://openweathermap.org>
 
 ### changelog
 
+#### 0.2.1
+* fixes issue #4 bug: Return invalid json
 
 #### 0.2.0
 * node-openweathermap is now browserifiable, #2 (many thanks to @MikkoH)

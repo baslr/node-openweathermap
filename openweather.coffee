@@ -64,10 +64,11 @@ buildPath = (cfg) ->
 getWeather = (opts, cb) ->
   http.get opts, (res) ->
     buffer = ''
-    
-    res.on 'data', (data) -> buffer += data;
-      
+
+    res.on 'data', (data) -> buffer += data
+
     res.on 'end', () ->
-      json = JSON.parse buffer
+      json      = cod:'500'
+      try json  = JSON.parse buffer
       json.list = [] if ! json.list?
       cb json

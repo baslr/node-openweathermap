@@ -117,7 +117,12 @@
       });
       return res.on('end', function() {
         var json;
-        json = JSON.parse(buffer);
+        json = {
+          cod: '500'
+        };
+        try {
+          json = JSON.parse(buffer);
+        } catch (_error) {}
         if (json.list == null) {
           json.list = [];
         }
