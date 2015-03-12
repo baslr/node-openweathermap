@@ -69,23 +69,23 @@ Generally you can set all http.get [Node.js options](http://nodejs.org/api/http.
     weather.defaults {units:'metric', lang:'de', mode:'json'}
     
     # id is Cologne, Germany
-    weather.now {id:2886242}, (json) ->
+    weather.now {id:2886242}, (err, json) ->
       console.dir json
 
     # 2 days forecast
-    weather.daily {id:2886242, cnt:2}, (json) ->
+    weather.daily {id:2886242, cnt:2}, (err, json) ->
       console.dir json
       
     # history for 3 hours
-    weather.history {type:'hour', id:2886242, cnt:3}, (json) ->
+    weather.history {type:'hour', id:2886242, cnt:3}, (err, json) ->
       console.dir json
 
     # find 3 berlins
-    weather.find {q:'berlin', cnt:2}, (json) ->
+    weather.find {q:'berlin', cnt:2}, (err, json) ->
       console.dir json
     
     # forecast for Okemos, MI
-    weather.forecast {id: 5004359}, (json) ->
+    weather.forecast {id: 5004359}, (err, json) ->
       console.dir json
 
 more infos about openweathermap.org at <http://openweathermap.org>
