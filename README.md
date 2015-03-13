@@ -92,6 +92,11 @@ more infos about openweathermap.org at <http://openweathermap.org>
 
 ### changelog
 
+#### 1.0.0
+* added error handling: Use node.js style Error-First Callbacks #5 (many thanks to @sweetpi)
+* release v1.0.0
+* release npm v1.0.0
+
 #### 0.2.1
 * fixes issue #4 bug: Return invalid json
 
