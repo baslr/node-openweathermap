@@ -67,7 +67,7 @@ buildPath = (cfg) ->
 
 
 getWeather = (opts, cb) ->
-  http.get opts, (res) ->
+  http.get(opts, (res) ->
     buffer = ''
 
     res.on 'data', (data) -> buffer += data
@@ -76,3 +76,4 @@ getWeather = (opts, cb) ->
       try json  = JSON.parse buffer catch error then return cb(error)
       json.list = [] if ! json.list?
       cb null, json
+  ).on('error', cb)
