@@ -146,7 +146,7 @@
         }
         return cb(null, json);
       });
-    });
+    }).on('error', cb);
   };
 
 }).call(this);
