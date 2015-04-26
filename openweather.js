@@ -19,7 +19,7 @@
     objs = [];
     for (i in cfg) {
       n = cfg[i];
-      objs.push(i + "=" + n);
+      objs.push(i + "=" + (encodeURIComponent(n)));
     }
     return def = objs.join('&');
   };
@@ -118,7 +118,7 @@
     objs = [];
     for (i in cfg) {
       n = cfg[i];
-      objs.push(i + "=" + n);
+      objs.push(i + "=" + (encodeURIComponent(n)));
     }
     return def + "&" + (objs.join('&'));
   };

@@ -6,7 +6,7 @@ def     = ''
 
 exports.defaults = (cfg) ->
   objs = []
-  objs.push "#{i}=#{n}" for i,n of cfg  
+  objs.push "#{i}=#{encodeURIComponent(n)}" for i,n of cfg
   def = objs.join '&'
 
 exports.opts = (optsIn = {}) ->
@@ -61,7 +61,7 @@ exports.history = (cfg, cb) ->
 
 buildPath = (cfg) ->
   objs = []  
-  objs.push "#{i}=#{n}" for i,n of cfg
+  objs.push "#{i}=#{encodeURIComponent(n)}" for i,n of cfg
 
   return "#{def}&#{objs.join('&')}"
 
