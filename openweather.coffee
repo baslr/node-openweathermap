@@ -19,7 +19,8 @@ exports.find = (cfg, cb) ->
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
-    item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
+    if json?.list?
+      item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
     cb null, json  
 
 
@@ -37,7 +38,8 @@ exports.forecast = (cfg, cb) ->
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
-    item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
+    if json?.list?
+      item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
     cb null, json
 
 
@@ -46,7 +48,8 @@ exports.daily = (cfg, cb) ->
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
-    item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
+    if json?.list?
+      item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
     cb null, json
 
 
@@ -55,7 +58,8 @@ exports.history = (cfg, cb) ->
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
-    item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
+    if json?.list?
+      item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
     cb null, json
 
 
