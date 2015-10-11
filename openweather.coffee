@@ -21,12 +21,12 @@ exports.find = (cfg, cb) ->
     return cb(err) if err?
     if json?.list?
       item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
-    cb null, json  
+    cb null, json
 
 
 exports.now = (cfg, cb) ->
   opts.path = "/data/2.5/weather?#{buildPath(cfg)}"
-  
+
   getWeather opts, (err, json) ->
     return cb(err) if err?
     json.weather[0].iconUrl = "#{imgPath}#{json.weather[0].icon}.png" if 200 is Number json.cod
@@ -44,7 +44,7 @@ exports.forecast = (cfg, cb) ->
 
 
 exports.daily = (cfg, cb) ->
-  opts.path = "/data/2.5/forecast/daily?#{buildPath(cfg)}"  
+  opts.path = "/data/2.5/forecast/daily?#{buildPath(cfg)}"
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
@@ -54,7 +54,7 @@ exports.daily = (cfg, cb) ->
 
 
 exports.history = (cfg, cb) ->
-  opts.path = "/data/2.5/history/city?#{buildPath(cfg)}"  
+  opts.path = "/data/2.5/history/city?#{buildPath(cfg)}"
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
@@ -64,7 +64,7 @@ exports.history = (cfg, cb) ->
 
 
 buildPath = (cfg) ->
-  objs = []  
+  objs = []
   objs.push "#{i}=#{encodeURIComponent(n)}" for i,n of cfg
 
   return "#{def}&#{objs.join('&')}"
@@ -77,7 +77,7 @@ getWeather = (opts, cb) ->
     res.on 'data', (data) -> buffer += data
     res.on 'error', (error) -> cb(error)
     res.on 'end', () ->
-      try json  = JSON.parse buffer catch error then return cb(error)
+      try json  = JSON.parse buffer catch error then return cb(new Error("Unable to parse response: " + buffer))
       json.list = [] if ! json.list?
       cb null, json
   ).on('error', cb)
