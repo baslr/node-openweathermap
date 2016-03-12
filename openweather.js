@@ -43,7 +43,7 @@
       if (err != null) {
         return cb(err);
       }
-      if ((json != null ? json.list : void 0) != null) {
+      if (((json != null ? json.list : void 0) != null) && 200 === Number(json.cod)) {
         ref = json.list;
         for (j = 0, len = ref.length; j < len; j++) {
           item = ref[j];
@@ -74,7 +74,7 @@
       if (err != null) {
         return cb(err);
       }
-      if ((json != null ? json.list : void 0) != null) {
+      if (((json != null ? json.list : void 0) != null) && 200 === Number(json.cod)) {
         ref = json.list;
         for (j = 0, len = ref.length; j < len; j++) {
           item = ref[j];
@@ -92,7 +92,7 @@
       if (err != null) {
         return cb(err);
       }
-      if ((json != null ? json.list : void 0) != null) {
+      if (((json != null ? json.list : void 0) != null) && 200 === Number(json.cod)) {
         ref = json.list;
         for (j = 0, len = ref.length; j < len; j++) {
           item = ref[j];
@@ -110,7 +110,7 @@
       if (err != null) {
         return cb(err);
       }
-      if ((json != null ? json.list : void 0) != null) {
+      if (((json != null ? json.list : void 0) != null) && 200 === Number(json.cod)) {
         ref = json.list;
         for (j = 0, len = ref.length; j < len; j++) {
           item = ref[j];
