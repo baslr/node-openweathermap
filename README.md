@@ -1,7 +1,7 @@
 node-openweathermap
 ===================
 
-A small abstraction layer for the openweathermap API
+A small abstraction layer for the OpenWeatherMap API
 
 ### install
 
@@ -56,7 +56,7 @@ units                |     x    |  x  |   x   |    x    | x    |  x
 
 ### opts
 
-    weather.ops({port:8080})
+    weather.opts({port:8080})
 
 sets the port to 8080 for all following requests. The opts method is chainable.
 Generally you can set all http.get [Node.js options](http://nodejs.org/api/http.html#http_http_request_options_callback).
