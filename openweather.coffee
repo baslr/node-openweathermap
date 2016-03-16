@@ -6,7 +6,7 @@ def     = ''
 
 exports.defaults = (cfg) ->
   objs = []
-  objs.push "#{i}=#{n}" for i,n of cfg  
+  objs.push "#{i}=#{encodeURIComponent(n)}" for i,n of cfg
   def = objs.join '&'
 
 exports.opts = (optsIn = {}) ->
@@ -19,13 +19,14 @@ exports.find = (cfg, cb) ->
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
-    item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
-    cb null, json  
+    if json?.list? and 200 is Number json.cod
+      item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
+    cb null, json
 
 
 exports.now = (cfg, cb) ->
   opts.path = "/data/2.5/weather?#{buildPath(cfg)}"
-  
+
   getWeather opts, (err, json) ->
     return cb(err) if err?
     json.weather[0].iconUrl = "#{imgPath}#{json.weather[0].icon}.png" if 200 is Number json.cod
@@ -37,42 +38,46 @@ exports.forecast = (cfg, cb) ->
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
-    item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
+    if json?.list? and 200 is Number json.cod
+      item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
     cb null, json
 
 
 exports.daily = (cfg, cb) ->
-  opts.path = "/data/2.5/forecast/daily?#{buildPath(cfg)}"  
+  opts.path = "/data/2.5/forecast/daily?#{buildPath(cfg)}"
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
-    item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
+    if json?.list? and 200 is Number json.cod
+      item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
     cb null, json
 
 
 exports.history = (cfg, cb) ->
-  opts.path = "/data/2.5/history/city?#{buildPath(cfg)}"  
+  opts.path = "/data/2.5/history/city?#{buildPath(cfg)}"
 
   getWeather opts, (err, json) ->
     return cb(err) if err?
-    item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
+    if json?.list? and 200 is Number json.cod
+      item.weather[0].iconUrl = "#{imgPath}#{item.weather[0].icon}.png" for item in json.list
     cb null, json
 
 
 buildPath = (cfg) ->
-  objs = []  
-  objs.push "#{i}=#{n}" for i,n of cfg
+  objs = []
+  objs.push "#{i}=#{encodeURIComponent(n)}" for i,n of cfg
 
   return "#{def}&#{objs.join('&')}"
 
 
 getWeather = (opts, cb) ->
-  http.get opts, (res) ->
+  http.get(opts, (res) ->
     buffer = ''
 
     res.on 'data', (data) -> buffer += data
     res.on 'error', (error) -> cb(error)
     res.on 'end', () ->
-      try json  = JSON.parse buffer catch error then return cb(error)
+      try json  = JSON.parse buffer catch error then return cb(new Error("Unable to parse response: " + buffer))
       json.list = [] if ! json.list?
       cb null, json
+  ).on('error', cb)
